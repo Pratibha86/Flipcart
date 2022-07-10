@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="2" parallel="tests" name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="2" parallel="tests" name="OperaBrowser(failed)">
+    <parameter name="browserName" value="Opera"/>
+    <classes>
+      <class name="ExcelTest.ToVerifyRemoveProduct">
+        <methods>
+          <include name="beforeMethod"/>
+          <include name="lunchBrowser"/>
+          <include name="beforeClass"/>
+          <include name="testToSelcectProduct"/>
+          <include name="testToRemoveProduct"/>
+          <include name="afterMethod"/>
+          <include name="afterClass"/>
+          <include name="closedObjects"/>
+        </methods>
+      </class> <!-- ExcelTest.ToVerifyRemoveProduct -->
+    </classes>
+  </test> <!-- OperaBrowser(failed) -->
+  <test thread-count="2" parallel="tests" name="ChromeBrowser(failed)">
+    <parameter name="browserName" value="Chrome"/>
+    <classes>
+      <class name="ExcelTest.ToVerifyRemoveProduct">
+        <methods>
+          <include name="beforeMethod"/>
+          <include name="lunchBrowser"/>
+          <include name="beforeClass"/>
+          <include name="testToSelcectProduct"/>
+          <include name="testToRemoveProduct"/>
+          <include name="afterMethod"/>
+          <include name="afterClass"/>
+          <include name="closedObjects"/>
+        </methods>
+      </class> <!-- ExcelTest.ToVerifyRemoveProduct -->
+    </classes>
+  </test> <!-- ChromeBrowser(failed) -->
+</suite> <!-- Failed suite [Suite] -->
