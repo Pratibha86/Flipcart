@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite" thread-count="2" parallel="tests" >
+<listeners>
+<listener class-name="extendReport.ExtentTestNGIReporterListener" />
+	</listeners>
   <test  name="ChromeBrowser">
   
   <parameter name="browserName" value="Chrome"></parameter>
     <classes>
-       <class name="ExcelTest.ToVerifySelectedProduct"/>
-       <class name="ExcelTest.ToVerifyRemoveProduct"/>
+       <class name="ExcelTest.ToVerifySelectedProduct">
+       <methods>
+       <include name="testToSearchProduct"/>
+        </methods>
+        </class>
+       <class name="ExcelTest.ToVerifyRemoveProduct">
+       <methods>
+       <include name="testToSelcectProduct"/>
+        </methods>
+        </class>
    </classes>
     </test> <!-- Test -->
    
@@ -16,8 +27,16 @@
     <parameter name="browserName" value="Opera"></parameter>
     <classes>
     
-       <class name="ExcelTest.ToVerifySelectedProduct"/>
-       <class name="ExcelTest.ToVerifyRemoveProduct"/>
+       <class name="ExcelTest.ToVerifySelectedProduct">
+       <methods>
+       <include name="testToSearchProduct"/>
+        </methods>
+        </class>
+       <class name="ExcelTest.ToVerifyRemoveProduct">
+       <methods>
+       <include name="testToSelcectProduct"/>
+        </methods>
+        </class>
    </classes>
     </test> <!-- Test -->
    

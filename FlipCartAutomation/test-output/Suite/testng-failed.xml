@@ -1,38 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite thread-count="2" parallel="tests" name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="2" parallel="tests" name="OperaBrowser(failed)">
-    <parameter name="browserName" value="Opera"/>
-    <classes>
-      <class name="ExcelTest.ToVerifyRemoveProduct">
-        <methods>
-          <include name="beforeMethod"/>
-          <include name="lunchBrowser"/>
-          <include name="beforeClass"/>
-          <include name="testToSelcectProduct"/>
-          <include name="testToRemoveProduct"/>
-          <include name="afterMethod"/>
-          <include name="afterClass"/>
-          <include name="closedObjects"/>
-        </methods>
-      </class> <!-- ExcelTest.ToVerifyRemoveProduct -->
-    </classes>
-  </test> <!-- OperaBrowser(failed) -->
+  <listeners>
+    <listener class-name="extendReport.ExtentTestNGIReporterListener"/>
+  </listeners>
   <test thread-count="2" parallel="tests" name="ChromeBrowser(failed)">
     <parameter name="browserName" value="Chrome"/>
     <classes>
-      <class name="ExcelTest.ToVerifyRemoveProduct">
+      <class name="ExcelTest.ToVerifySelectedProduct">
         <methods>
+          <include name="afterMethod"/>
+          <include name="closedBrowser"/>
           <include name="beforeMethod"/>
           <include name="lunchBrowser"/>
+          <include name="testToSearchProduct"/>
           <include name="beforeClass"/>
-          <include name="testToSelcectProduct"/>
-          <include name="testToRemoveProduct"/>
-          <include name="afterMethod"/>
-          <include name="afterClass"/>
-          <include name="closedObjects"/>
+          <include name="clearObject"/>
         </methods>
-      </class> <!-- ExcelTest.ToVerifyRemoveProduct -->
+      </class> <!-- ExcelTest.ToVerifySelectedProduct -->
     </classes>
   </test> <!-- ChromeBrowser(failed) -->
+  <test thread-count="2" parallel="tests" name="OperaBrowser(failed)">
+    <parameter name="browserName" value="Opera"/>
+    <classes>
+      <class name="ExcelTest.ToVerifySelectedProduct">
+        <methods>
+          <include name="afterMethod"/>
+          <include name="closedBrowser"/>
+          <include name="beforeMethod"/>
+          <include name="lunchBrowser"/>
+          <include name="testToSearchProduct"/>
+          <include name="beforeClass"/>
+          <include name="clearObject"/>
+        </methods>
+      </class> <!-- ExcelTest.ToVerifySelectedProduct -->
+    </classes>
+  </test> <!-- OperaBrowser(failed) -->
 </suite> <!-- Failed suite [Suite] -->

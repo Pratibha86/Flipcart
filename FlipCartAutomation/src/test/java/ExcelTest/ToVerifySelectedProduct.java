@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.apache.poi.EncryptedDocumentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -15,6 +16,10 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
 import browser.Base;
 import pom.AddToCartHeadPhones;
@@ -34,12 +39,18 @@ public class ToVerifySelectedProduct {
 	    RemoveProduct removeProduct;
 	    SoftAssert soft;
 	    int testID;
+	    static ExtentTest test;
+		static ExtentHtmlReporter reporter;
 	    
 	    @Parameters("browserName")
 	    
 	   @BeforeTest 
 	   public void lunchBrowser(String browser) {
 		   System.out.println("Before Test");
+		    reporter = new ExtentHtmlReporter("test-output/ExtentReport/Extent.html");
+			ExtentReports extend = new ExtentReports();
+			extend.attachReporter(reporter);
+		   
 		   if(browser.equals("Chrome"))
 		   {
 			   driver= Base.openChromeBrowser();
@@ -72,7 +83,7 @@ public class ToVerifySelectedProduct {
    		   
    		   soft=new SoftAssert();
           }
-     @Test(invocationCount=2)
+     @Test(invocationCount=1)
             public void testToSearchProduct() throws InterruptedException {
     	    testID=102;
     	    System.out.println("test A");
@@ -83,14 +94,8 @@ public class ToVerifySelectedProduct {
         	String title1=driver.getTitle();
         	//System.out.println(url1);
         	//System.out.println(title1);
-        	if(title1.equals("Online Shopping Site for Mobiles, Electronics, Furniture, Grocery, Lifestyle, Books & More. Best Offers!"))
-             {
-    	        System.out.println("pass");
-             }
-             else
-             {
-            	 System.out.println("fail"); 
-             }
+        	Assert.assertEquals(title1, "Oline Shopping Site for Mobiles, Electronics, Furniture, Grocery, Lifestyle, Books & More. Best Offers!", "title failed");
+        	
            
      }
      
@@ -128,7 +133,7 @@ public class ToVerifySelectedProduct {
     			{
     				Utility.captureScreen(driver,testID);
     			}
-    			Thread.sleep(4000);
+    			Thread.sleep(2000);
     			
     	homePageFlipcarth.clickToLogout();
     	

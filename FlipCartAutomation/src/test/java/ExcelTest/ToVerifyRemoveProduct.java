@@ -16,6 +16,10 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+
 import browser.Base;
 import pom.AddToCartHeadPhones;
 import pom.HomePageFlipcarth;
@@ -25,6 +29,9 @@ import pom.RemoveProduct;
 import utilis.Utility;
 
 public class ToVerifyRemoveProduct {
+	    
+	
+	
 	
 	    WebDriver driver;
 	    LoginPageFlipcart loginPageFlipcart;
@@ -33,11 +40,18 @@ public class ToVerifyRemoveProduct {
 	    AddToCartHeadPhones addToCartHeadPhones;
 	    RemoveProduct removeProduct;
 	    int testID;
+	    
+	    static ExtentTest test;
+		static ExtentHtmlReporter reporter;
 	    @Parameters("browserName")
 	    
 		   @BeforeTest 
 		   public void lunchBrowser(String browser) {
 			   System.out.println("Before Test");
+			   reporter = new ExtentHtmlReporter("test-output/ExtentReport/Extent.html");
+				ExtentReports extend = new ExtentReports();
+				extend.attachReporter(reporter);
+			   
 			   if(browser.equals("Chrome"))
 			   {
 				   driver= Base.openChromeBrowser();
@@ -114,7 +128,7 @@ public class ToVerifyRemoveProduct {
 			{
 				Utility.captureScreen(driver,testID);
 			}
-			Thread.sleep(4000);
+			Thread.sleep(2000);
 		 
     	homePageFlipcarth.clickToLogout();
     	
